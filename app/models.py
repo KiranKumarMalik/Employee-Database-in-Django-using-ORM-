@@ -8,6 +8,8 @@ class Dept(models.Model):
 
     class Meta:
         db_table = 'dept'
+    def __str__(self):
+        return str(self.deptno)
 
 class Emp(models.Model):
     empno = models.IntegerField(primary_key=True)
@@ -21,3 +23,5 @@ class Emp(models.Model):
 
     class Meta:
         db_table = 'emp'
+    def __str__(self):
+        return str(self.empno)
