@@ -20,7 +20,7 @@ def insert_department(request=None):  # request is optional for manual execution
             return HttpResponse(f"✅ Department '{dname}' inserted successfully!")
 
     return HttpResponse("❌ Error: Invalid input! Please enter valid values.", status=400)
-insert_department()
+# insert_department()
 
 # Function to insert an employee using input()
 def insert_employee(request=None):  # request is optional for manual execution
@@ -65,26 +65,29 @@ def insert_employee(request=None):  # request is optional for manual execution
             return HttpResponse("❌ Error: Department not found!", status=404)
 
     return HttpResponse("❌ Error: Invalid input! Please enter valid values.", status=400)
-insert_employee()
+# insert_employee()
 
 # Function to retrieve employee data using input()
-def retrieve_employee(request=None):  # request is optional for manual execution
-    emp_id = input("Enter Employee Number to Retrieve: ")
+# def retrieve_employee(request=None):  # request is optional for manual execution
+#     emp_id = input("Enter Employee Number to Retrieve: ")
 
-    if emp_id.isdigit():
-        emp_id = int(emp_id)
-        emp = Emp.objects.filter(empno=emp_id).first()
+#     if emp_id.isdigit():
+#         emp_id = int(emp_id)
+#         emp = Emp.objects.filter(empno=emp_id).first()
 
-        if emp:
-            return HttpResponse(
-                f"✅ Employee Found: <br>"
-                f"👤 Name: {emp.ename} <br>"
-                f"💼 Job: {emp.job} <br>"
-                f"💲 Salary: {emp.sal} <br>"
-                f"🏢 Department: {emp.deptno.dname}"
-            )
-        else:
-            return HttpResponse("❌ Employee not found!", status=404)
+#         if emp:
+#             return HttpResponse(
+#                 f"✅ Employee Found: <br>"
+#                 f"👤 Name: {emp.ename} <br>"
+#                 f"💼 Job: {emp.job} <br>"
+#                 f"💲 Salary: {emp.sal} <br>"
+#                 f"🏢 Department: {emp.deptno.dname}"
+#             )
+#         else:
+#             return HttpResponse("❌ Employee not found!", status=404)
 
-    return HttpResponse("❌ Error: Invalid Employee Number!", status=400)
-retrieve_employee()  # Retrieve employee details
+#     return HttpResponse("❌ Error: Invalid Employee Number!", status=400)
+def retrieve_employees(request):
+    employees = Emp.objects.all()  # Get all employees
+    return render(request, 'employees.html', {'employees': employees})
+
