@@ -27,7 +27,7 @@
 </head>
 <body>
 
-    <h2>Employee List</h2>
+    <h2>Employee Table</h2>
 
     <table>
         <thead>
@@ -53,6 +53,31 @@
                 <td>{{ emp.sal }}</td>
                 <td>{{ emp.comm }}</td>
                 <td>{{ emp.deptno.dname }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="8">No employees found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Department Table</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Department No</th>
+                <th>Department Name</th>
+                <th>Location</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for dept in departments %}
+            <tr>
+                <td>{{ dept.deptno }}</td>
+                <td>{{ dept.dname }}</td>
+                <td>{{ dept.loc }}</td>
             </tr>
             {% empty %}
             <tr>
