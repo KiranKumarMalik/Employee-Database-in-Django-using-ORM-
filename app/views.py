@@ -87,8 +87,9 @@ def insert_employee(request=None):  # request is optional for manual execution
 #             return HttpResponse("❌ Employee not found!", status=404)
 
 #     return HttpResponse("❌ Error: Invalid Employee Number!", status=400)
-def retrieve_employees(request):
-    employees = Emp.objects.all()  # Get all employees
-    departments = Dept.objects.all()  # Get all departments
-    return render(request, 'employees.html', {'employees': employees, 'departments': departments})
+def retrieve_employees(request=None):
+    employees = Emp.objects.all().order_by('ename')  # Get all employees
+    developer = Emp.objects.exclude(deptno=6489).order_by('ename')  # Get all employees
+    departments = Dept.objects.all().order_by('dname')  # Get all departments
+    return render(request, 'employees.html', {'employees': employees, 'developer': developer, 'departments': departments})
 
