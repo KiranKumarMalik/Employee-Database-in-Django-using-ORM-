@@ -121,5 +121,53 @@
         </tbody>
     </table>
 
+    <h2>Bhubaneswar Department Table</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Department No</th>
+                <th>Department Name</th>
+                <th>Location</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for dept in bhubaneswardept %}
+            <tr>
+                <td>{{ dept.deptno }}</td>
+                <td>{{ dept.dname }}</td>
+                <td>{{ dept.loc }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="8">No employees found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Other Department Table</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Department No</th>
+                <th>Department Name</th>
+                <th>Location</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for dept in otherdept %}
+            <tr>
+                <td>{{ dept.deptno }}</td>
+                <td>{{ dept.dname }}</td>
+                <td>{{ dept.loc }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="8">No employees found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
 </body>
 </html>

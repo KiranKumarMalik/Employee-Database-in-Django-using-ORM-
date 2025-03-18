@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Dept, Emp
 from datetime import datetime
+from django.db.models import Q
 
 # Function to insert a department using input()
 def insert_department(request=None):  # request is optional for manual execution
@@ -89,7 +90,9 @@ def insert_employee(request=None):  # request is optional for manual execution
 #     return HttpResponse("❌ Error: Invalid Employee Number!", status=400)
 def retrieve_employees(request=None):
     employees = Emp.objects.all().order_by('ename')  # Get all employees
-    developer = Emp.objects.exclude(deptno=6489).order_by('ename')  # Get all employees
+    developer = Emp.objects.filter(deptno=7561).order_by('ename')  # Get all employees
     departments = Dept.objects.all().order_by('dname')  # Get all departments
-    return render(request, 'employees.html', {'employees': employees, 'developer': developer, 'departments': departments})
+    bhubaneswardept = Dept.objects.filter(loc='Bhubaneswar')
+    otherdept = Dept.objects.filter(Q(loc='Bengaluru') | Q(loc='Kolkata') | Q(loc='Pune') | Q(loc='Hyderabad'))
+    return render(request, 'employees.html', {'employees': employees, 'developer': developer, 'departments': departments, 'bhubaneswardept':bhubaneswardept, 'otherdept':otherdept})
 
