@@ -1,4 +1,5 @@
 ## 🧑‍💼  Employee Database using ORM (Object Relational Mapping/Model)
+Fetching the data from DB 
 
 
 
